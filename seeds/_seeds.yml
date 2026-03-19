@@ -1,0 +1,39 @@
+version: 2
+
+seeds:
+  - name: accounts
+    config:
+      column_types:
+        account_id: varchar
+        customer_id: varchar
+        account_type: varchar
+        account_status: varchar
+        open_date: date
+        credit_limit: decimal(10,2)
+        current_balance: decimal(10,2)
+
+  - name: transactions
+    config:
+      column_types:
+        transaction_id: varchar
+        account_id: varchar
+        transaction_date: date
+        amount: decimal(10,2)
+        transaction_type: varchar
+        status: varchar
+        merchant_name: varchar
+        category: varchar
+
+  - name: customers
+    config:
+      column_types:
+        customer_id: varchar
+        customer_name: varchar
+        email: varchar
+        customer_type: varchar
+        risk_category: varchar
+        created_at: date
+        city: varchar
+        state: varchar
+        age_group: varchar
+        credit_score: integer

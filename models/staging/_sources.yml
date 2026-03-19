@@ -1,0 +1,33 @@
+version: 2
+
+# TODO [Module 2]: Configure sources by uncommenting and completing this block.
+# This replaces the ref() calls in staging models with proper source() references.
+
+# sources:
+#   - name: bronze
+#     description: Bronze layer - raw data from CSV seeds
+#     database: finance_analytics  # The DuckDB database file (finance_analytics.duckdb)
+#     schema: bronze
+#     
+#     tables:
+#       - name: transactions
+#         description: Raw transaction data
+#         columns:
+#           - name: transaction_id
+#             description: Unique identifier for each transaction
+#             tests:
+#               - unique
+#               - not_null
+#           
+#           - name: account_id
+#             description: Foreign key to accounts
+#             tests:
+#               - not_null
+#       
+#       - name: accounts
+#         description: Account master data
+#         # TODO [Module 2]: Add columns and tests
+#       
+#       - name: customers
+#         description: Customer master data
+#         # TODO [Module 2]: Add columns and tests

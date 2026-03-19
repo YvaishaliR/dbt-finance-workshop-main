@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: stg_transactions
+    description: >
+      Staging layer for transaction data. Excludes failed transactions.
+      Customer information is accessed through the account relationship.
+    columns:
+      - name: transaction_id
+        description: Unique identifier for each transaction
+        tests:
+          - unique
+          - not_null
+
+      - name: account_id
+        description: Foreign key to accounts (customer accessed through account)
+        tests:
+          - not_null
+          # TODO [Module 2]: Add relationships test to stg_accounts
+
+      - name: amount
+        description: Transaction amount in USD
+        tests:
+          - not_null
+          # TODO [Module 2]: Add test to ensure amount is not zero
+
+      - name: transaction_type
+        description: Type of transaction (debit, credit, transfer)
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['debit', 'credit', 'transfer']
+
+      - name: status
+        description: Transaction status
+        # TODO [Module 2]: Add accepted_values test for status (completed, pending)
+        # - accepted_values:
+        #     arguments:
+        #       values: ['completed', 'pending']
+
+  # TODO [Module 2]: Add schema tests for stg_accounts
+  # Columns to test:
+  #   account_id     → unique, not_null
+  #   customer_id    → not_null, relationships to stg_customers.customer_id
+  #   account_type   → not_null, accepted_values: [checking, savings, credit_card]
+  #   account_status → accepted_values: [active, closed, suspended]
+  #   current_balance → not_null
+  # - name: stg_accounts
+
+  # TODO [Module 2]: Add schema tests for stg_customers
+  # Columns to test:
+  #   customer_id   → unique, not_null
+  #   email         → unique, not_null
+  #   customer_type → accepted_values: [individual, business]
+  #   risk_category → accepted_values: [low, medium, high]
+  #   credit_score  → not_null
+  # - name: stg_customers

@@ -1,0 +1,101 @@
+transaction_id,account_id,transaction_date,amount,transaction_type,status,merchant_name,category
+TXN001,ACC001,2024-01-05,150.50,debit,completed,Amazon,shopping
+TXN002,ACC002,2024-01-05,2500.00,credit,completed,Salary Direct Deposit,income
+TXN003,ACC001,2024-01-06,45.20,debit,completed,Starbucks,food_beverage
+TXN004,ACC003,2024-01-06,1200.00,debit,completed,Rent Payment,housing
+TXN005,ACC004,2024-01-07,75.00,debit,failed,Gas Station,transportation
+TXN006,ACC002,2024-01-07,200.00,debit,completed,Grocery Store,groceries
+TXN007,ACC005,2024-01-08,3000.00,credit,completed,Freelance Payment,income
+TXN008,ACC001,2024-01-08,25.00,debit,completed,Netflix,entertainment
+TXN009,ACC003,2024-01-09,500.00,transfer,completed,Savings Transfer,transfer
+TXN010,ACC006,2024-01-09,89.99,debit,completed,Walmart,shopping
+TXN011,ACC004,2024-01-10,1500.00,credit,completed,Salary Direct Deposit,income
+TXN012,ACC007,2024-01-10,450.00,debit,completed,Electric Bill,utilities
+TXN013,ACC002,2024-01-11,125.75,debit,completed,Target,shopping
+TXN014,ACC008,2024-01-11,2000.00,credit,completed,Contract Payment,income
+TXN015,ACC005,2024-01-12,60.00,debit,completed,Restaurant,food_beverage
+TXN016,ACC001,2024-01-12,300.00,debit,pending,Hotel Booking,travel
+TXN017,ACC009,2024-01-13,180.00,debit,completed,Gym Membership,health
+TXN018,ACC003,2024-01-13,95.50,debit,completed,Pharmacy,health
+TXN019,ACC010,2024-01-14,3500.00,credit,completed,Salary Direct Deposit,income
+TXN020,ACC006,2024-01-14,220.00,debit,completed,Insurance Premium,insurance
+TXN021,ACC004,2024-01-15,75.00,debit,completed,Internet Bill,utilities
+TXN022,ACC007,2024-01-15,450.00,debit,failed,Car Payment,transportation
+TXN023,ACC002,2024-01-16,1000.00,transfer,completed,Investment Transfer,transfer
+TXN024,ACC008,2024-01-16,55.00,debit,completed,Coffee Shop,food_beverage
+TXN025,ACC005,2024-01-17,800.00,debit,completed,Electronics Store,shopping
+TXN026,ACC001,2024-01-17,40.00,debit,completed,Gas Station,transportation
+TXN027,ACC009,2024-01-18,2200.00,credit,completed,Consulting Fee,income
+TXN028,ACC003,2024-01-18,150.00,debit,completed,Clothing Store,shopping
+TXN029,ACC010,2024-01-19,90.00,debit,completed,Mobile Phone Bill,utilities
+TXN030,ACC006,2024-01-19,175.50,debit,completed,Home Depot,home_improvement
+TXN031,ACC004,2024-01-20,2500.00,credit,completed,Bonus Payment,income
+TXN032,ACC007,2024-01-20,65.00,debit,completed,Streaming Services,entertainment
+TXN033,ACC002,2024-01-21,320.00,debit,completed,Dentist,health
+TXN034,ACC008,2024-01-21,500.00,transfer,completed,Emergency Fund,transfer
+TXN035,ACC005,2024-01-22,110.00,debit,completed,Bookstore,education
+TXN036,ACC001,2024-01-22,85.00,debit,completed,Pet Store,pets
+TXN037,ACC009,2024-01-23,1800.00,credit,completed,Project Payment,income
+TXN038,ACC003,2024-01-23,200.00,debit,completed,Home Insurance,insurance
+TXN039,ACC010,2024-01-24,45.00,debit,completed,Parking Fee,transportation
+TXN040,ACC006,2024-01-24,275.00,debit,completed,Furniture Store,home_improvement
+TXN041,ACC004,2024-01-25,3000.00,credit,completed,Salary Direct Deposit,income
+TXN042,ACC007,2024-01-25,120.00,debit,completed,Water Bill,utilities
+TXN043,ACC002,2024-01-26,95.00,debit,completed,Uber,transportation
+TXN044,ACC008,2024-01-26,450.00,debit,completed,Property Tax,taxes
+TXN045,ACC005,2024-01-27,180.00,debit,completed,Restaurant,food_beverage
+TXN046,ACC001,2024-01-27,60.00,debit,completed,Movie Theater,entertainment
+TXN047,ACC009,2024-01-28,2500.00,credit,completed,Salary Direct Deposit,income
+TXN048,ACC003,2024-01-28,350.00,debit,completed,Car Repair,transportation
+TXN049,ACC010,2024-01-29,125.00,debit,completed,Grocery Store,groceries
+TXN050,ACC006,2024-01-29,500.00,transfer,completed,Savings Transfer,transfer
+TXN051,ACC004,2024-01-30,75.00,debit,completed,Office Supplies,business
+TXN052,ACC007,2024-01-30,200.00,debit,completed,Veterinarian,pets
+TXN053,ACC002,2024-01-31,1200.00,debit,completed,Mortgage Payment,housing
+TXN054,ACC008,2024-01-31,85.00,debit,completed,Dry Cleaning,personal_care
+TXN055,ACC005,2024-02-01,3200.00,credit,completed,Freelance Payment,income
+TXN056,ACC001,2024-02-01,45.00,debit,completed,Pharmacy,health
+TXN057,ACC009,2024-02-02,150.00,debit,completed,Sporting Goods,shopping
+TXN058,ACC003,2024-02-02,280.00,debit,completed,Grocery Store,groceries
+TXN059,ACC010,2024-02-03,3800.00,credit,completed,Salary Direct Deposit,income
+TXN060,ACC006,2024-02-03,95.00,debit,completed,Hair Salon,personal_care
+TXN061,ACC004,2024-02-04,120.00,debit,completed,Gas Station,transportation
+TXN062,ACC007,2024-02-04,600.00,debit,completed,Credit Card Payment,credit_payment
+TXN063,ACC002,2024-02-05,210.00,debit,completed,Home Depot,home_improvement
+TXN064,ACC008,2024-02-05,2100.00,credit,completed,Contract Payment,income
+TXN065,ACC005,2024-02-06,55.00,debit,completed,Coffee Shop,food_beverage
+TXN066,ACC001,2024-02-06,400.00,debit,completed,Flight Booking,travel
+TXN067,ACC009,2024-02-07,175.00,debit,completed,Doctor Visit,health
+TXN068,ACC003,2024-02-07,90.00,debit,completed,Phone Accessories,shopping
+TXN069,ACC010,2024-02-08,250.00,debit,completed,Auto Insurance,insurance
+TXN070,ACC006,2024-02-08,320.00,debit,completed,Appliance Repair,home_improvement
+TXN071,ACC004,2024-02-09,3000.00,credit,completed,Salary Direct Deposit,income
+TXN072,ACC007,2024-02-09,140.00,debit,completed,Cable TV,utilities
+TXN073,ACC002,2024-02-10,85.00,debit,completed,Restaurant,food_beverage
+TXN074,ACC008,2024-02-10,750.00,transfer,completed,Investment Transfer,transfer
+TXN075,ACC005,2024-02-11,195.00,debit,completed,Department Store,shopping
+TXN076,ACC001,2024-02-11,65.00,debit,completed,Spotify,entertainment
+TXN077,ACC009,2024-02-12,2800.00,credit,completed,Consulting Fee,income
+TXN078,ACC003,2024-02-12,420.00,debit,completed,Home Security,utilities
+TXN079,ACC010,2024-02-13,110.00,debit,completed,Gym Membership,health
+TXN080,ACC006,2024-02-13,180.00,debit,completed,Pet Grooming,pets
+TXN081,ACC004,2024-02-14,225.00,debit,completed,Valentine's Dinner,food_beverage
+TXN082,ACC007,2024-02-14,500.00,debit,completed,Jewelry Store,shopping
+TXN083,ACC002,2024-02-15,95.00,debit,completed,Car Wash,transportation
+TXN084,ACC008,2024-02-15,2300.00,credit,completed,Project Payment,income
+TXN085,ACC005,2024-02-16,160.00,debit,completed,Grocery Store,groceries
+TXN086,ACC001,2024-02-16,75.00,debit,completed,Gaming Store,entertainment
+TXN087,ACC009,2024-02-17,1900.00,credit,completed,Salary Direct Deposit,income
+TXN088,ACC003,2024-02-17,310.00,debit,completed,Optometrist,health
+TXN089,ACC010,2024-02-18,450.00,debit,completed,Rent Payment,housing
+TXN090,ACC006,2024-02-18,135.00,debit,completed,Garden Center,home_improvement
+TXN091,ACC004,2024-02-19,3500.00,credit,completed,Bonus Payment,income
+TXN092,ACC007,2024-02-19,80.00,debit,completed,Magazine Subscription,entertainment
+TXN093,ACC002,2024-02-20,245.00,debit,completed,Costco,groceries
+TXN094,ACC008,2024-02-20,1000.00,transfer,completed,Retirement Fund,transfer
+TXN095,ACC005,2024-02-21,125.00,debit,completed,Office Supplies,business
+TXN096,ACC001,2024-02-21,55.00,debit,completed,Taxi,transportation
+TXN097,ACC009,2024-02-22,2600.00,credit,completed,Contract Payment,income
+TXN098,ACC003,2024-02-22,190.00,debit,completed,Hardware Store,home_improvement
+TXN099,ACC010,2024-02-23,70.00,debit,completed,Barber Shop,personal_care
+TXN100,ACC006,2024-02-23,380.00,debit,completed,Electronics Store,shopping

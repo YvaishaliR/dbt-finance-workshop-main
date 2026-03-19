@@ -1,0 +1,11 @@
+customer_id,customer_name,email,customer_type,risk_category,created_at,city,state,age_group,credit_score
+CUST001,John Smith,john.smith@email.com,individual,low,2020-03-15,New York,NY,35-44,750
+CUST002,Sarah Johnson,sarah.j@email.com,individual,low,2019-06-20,Los Angeles,CA,25-34,720
+CUST003,Michael Chen,m.chen@email.com,individual,medium,2021-01-10,Chicago,IL,45-54,680
+CUST004,Emily Davis,emily.d@email.com,individual,low,2018-11-05,Houston,TX,35-44,740
+CUST005,David Martinez,d.martinez@email.com,business,low,2022-02-14,Phoenix,AZ,35-44,760
+CUST006,Jennifer Wilson,j.wilson@email.com,individual,low,2020-08-22,Philadelphia,PA,55-64,780
+CUST007,Robert Brown,rob.brown@email.com,individual,medium,2019-12-01,San Antonio,TX,25-34,660
+CUST008,Lisa Anderson,lisa.a@email.com,business,low,2021-05-18,San Diego,CA,45-54,770
+CUST009,James Taylor,j.taylor@email.com,individual,low,2020-09-30,Dallas,TX,35-44,730
+CUST010,Amanda White,amanda.w@email.com,individual,low,2022-01-08,San Jose,CA,25-34,755

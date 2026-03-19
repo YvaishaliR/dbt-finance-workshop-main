@@ -1,0 +1,59 @@
+name: 'finance_analytics'         # Must match the profile name in ~/.dbt/profiles.yml
+version: '1.0.0'
+config-version: 2
+
+profile: 'finance_analytics'      # Tells dbt which profile (database connection) to use
+
+# Where dbt looks for each type of file. Rarely need to change these.
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+# dbt clean deletes these folders. Safe to delete - dbt rebuilds them on next run.
+clean-targets:
+  - "target"       # Compiled SQL and run artifacts
+  - "dbt_packages" # Installed packages (like node_modules in JS)
+
+# ─────────────────────────────────────────────
+# Model configurations
+# Settings cascade down folder hierarchy.
+# A child folder setting overrides a parent setting.
+# The + prefix means "apply this config to all models in this folder".
+# ─────────────────────────────────────────────
+models:
+  finance_analytics:
+
+    staging:
+      +materialized: view     # Views are lightweight - no data stored, query runs fresh each time
+      +schema: staging        # Creates models in the 'staging' schema in DuckDB
+
+    intermediate:
+      +materialized: ephemeral  # Not created in DB at all - inlined as a CTE wherever referenced
+      +schema: intermediate
+
+    marts:
+      +materialized: table    # Physical tables - data is stored, faster to query than views
+      +schema: marts
+      finance:
+        +tags: ['finance', 'marts']   # Tags let you run subsets: dbt build --select tag:finance
+
+# ─────────────────────────────────────────────
+# Seed configurations
+# Seeds are CSV files loaded into the database as tables.
+# ─────────────────────────────────────────────
+seeds:
+  finance_analytics:
+    +schema: bronze           # Seeds land in the 'bronze' schema - our raw data layer
+    +quote_columns: false     # Don't quote column names - keeps SQL cleaner
+
+# ─────────────────────────────────────────────
+# Variables
+# Accessible in any model with {{ var('start_date') }}
+# Override at runtime: dbt run --vars '{"start_date": "2024-06-01"}'
+# ─────────────────────────────────────────────
+vars:
+  start_date: '2024-01-01'
+  end_date: '2024-12-31'

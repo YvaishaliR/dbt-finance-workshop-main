@@ -1,0 +1,16 @@
+# Copy this file to ~/.dbt/profiles.yml (on Mac/Linux) or %USERPROFILE%\.dbt\profiles.yml (on Windows)
+# This is the configuration that tells dbt how to connect to your database
+
+finance_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: 'finance_analytics.duckdb'
+      # Optional: number of threads to use for parallel execution
+      threads: 4
+      
+    prod:
+      type: duckdb
+      path: 'finance_analytics_prod.duckdb'
+      threads: 4

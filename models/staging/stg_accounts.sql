@@ -4,7 +4,7 @@
 with source_data as (
     
     -- TODO [Module 1]: Reference the accounts seed table
-    select * from {{ ref('accounts') }}
+     select * from {{ source('bronze', 'accounts') }}
     -- NOTE [Module 2]: Replace ref() with source('bronze', 'accounts') in double curly braces
 
 ),

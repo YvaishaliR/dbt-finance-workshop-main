@@ -6,8 +6,7 @@ with source_data as (
     
     -- NOTE [Module 1]: Using ref() to reference the seed for now
     -- NOTE [Module 2]: Replace ref() with source('bronze', 'transactions') in double curly braces
-    select * from {{ ref('transactions') }}
-
+     select * from {{ source('bronze', 'transactions') }}
 ),
 
 renamed as (

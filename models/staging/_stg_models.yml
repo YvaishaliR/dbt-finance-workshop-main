@@ -34,9 +34,87 @@ models:
       - name: status
         description: Transaction status
         # TODO [Module 2]: Add accepted_values test for status (completed, pending)
-        # - accepted_values:
-        #     arguments:
-        #       values: ['completed', 'pending']
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['completed', 'pending']
+  
+  - name: stg_accounts
+    description: >
+      Staging layer for accounts data.
+    columns:
+
+      - name: account_id
+        description: Foreign key to accounts (customer accessed through account)
+        tests:
+          - not_null
+          - unique
+          # TODO [Module 2]: Add relationships test to stg_accounts
+
+      - name: customer_id
+        description: Foreign key to customers
+        tests:
+          - not_null
+          # TODO [Module 2]: Add relationships test to stg_customers
+
+      - name: account_type
+        description: Type of account (checking, savings, credit_card)
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['checking', 'savings', 'credit_card']
+
+      - name: account_status
+        description: Status of the account (active, closed, suspended)
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['active', 'closed', 'suspended']
+
+      - name: current_balance
+        description: Current balance in the account
+        tests:
+          - not_null
+
+
+  - name: stg_customers
+    description: Staging layer for customers data.
+    columns:
+
+        - name: customer_id
+          description: Unique customer identifier
+          tests:
+            - not_null
+            - unique
+            # TODO [Module 2]: Add relationships test to stg_customers
+
+        - name: email
+          description: Customer email address
+          tests:
+            - not_null
+            - unique
+
+        - name: customer_type
+          description: Type of customer (individual, business)
+          tests:
+            - accepted_values:
+                arguments:
+                  values: ['individual', 'business']
+
+        - name: risk_category
+          description: Risk category of the customer (low, medium, high)
+          tests:
+            - accepted_values:
+                arguments:
+                  values: ['low', 'medium', 'high']
+
+        - name: credit_score
+          description: Credit score of the customer
+          tests:
+            - not_null
+
 
   # TODO [Module 2]: Add schema tests for stg_accounts
   # Columns to test:

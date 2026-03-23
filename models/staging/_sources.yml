@@ -1,33 +1,68 @@
 version: 2
 
-# TODO [Module 2]: Configure sources by uncommenting and completing this block.
-# This replaces the ref() calls in staging models with proper source() references.
+sources:
+  - name: bronze
+    description: Bronze layer - raw data from CSV seeds
+    database: finance_analytics  # The DuckDB database file (finance_analytics.duckdb)
+    schema: bronze        # The schema where seeds are loaded
 
-# sources:
-#   - name: bronze
-#     description: Bronze layer - raw data from CSV seeds
-#     database: finance_analytics  # The DuckDB database file (finance_analytics.duckdb)
-#     schema: bronze
-#     
-#     tables:
-#       - name: transactions
-#         description: Raw transaction data
-#         columns:
-#           - name: transaction_id
-#             description: Unique identifier for each transaction
-#             tests:
-#               - unique
-#               - not_null
-#           
-#           - name: account_id
-#             description: Foreign key to accounts
-#             tests:
-#               - not_null
-#       
-#       - name: accounts
-#         description: Account master data
-#         # TODO [Module 2]: Add columns and tests
-#       
-#       - name: customers
-#         description: Customer master data
-#         # TODO [Module 2]: Add columns and tests
+    tables:
+      - name: transactions
+        description: Raw transaction data from banking system
+        columns:
+          - name: transaction_id
+            description: Unique identifier for each transaction
+            tests:
+              - unique
+              - not_null
+
+          - name: account_id
+            description: Foreign key to accounts table
+            tests:
+              - not_null
+
+          - name: amount
+            description: Transaction amount in USD
+            tests:
+              - not_null
+
+          - name: transaction_date
+            description: Date when transaction occurred
+            tests:
+              - not_null
+
+      - name: accounts
+        description: Account master data
+        columns:
+          - name: account_id
+            description: Unique account identifier
+            tests:
+              - unique
+              - not_null
+
+          - name: customer_id
+            description: Foreign key to customers
+            tests:
+              - not_null
+
+          - name: account_type
+            description: Type of account (checking, savings, credit_card)
+            tests:
+              - accepted_values:
+                  arguments:
+                    values: ['checking', 'savings', 'credit_card']
+
+      - name: customers
+        description: Customer master data
+        columns:
+          - name: customer_id
+            description: Unique customer identifier
+            tests:
+              - unique
+              - not_null
+
+          - name: email
+            description: Customer email address
+            tests:
+              - unique
+              - not_null

@@ -16,6 +16,9 @@ models:
         description: Foreign key to accounts (customer accessed through account)
         tests:
           - not_null
+          - relationships:
+              to: ref('stg_accounts')
+              field: account_id
           # TODO [Module 2]: Add relationships test to stg_accounts
 
       - name: amount
@@ -49,12 +52,16 @@ models:
         tests:
           - not_null
           - unique
+          
           # TODO [Module 2]: Add relationships test to stg_accounts
 
       - name: customer_id
         description: Foreign key to customers
         tests:
           - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
           # TODO [Module 2]: Add relationships test to stg_customers
 
       - name: account_type

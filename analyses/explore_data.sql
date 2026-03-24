@@ -1,7 +1,3 @@
-SELECT
-    transaction_date,
-    sum(transaction_count) as total_transactions,
-    sum(total_amount)      as daily_volume
-FROM marts.fct_daily_transactions
-GROUP BY transaction_date
-ORDER BY transaction_date;
+SELECT customer_segment, count(*) as count
+FROM marts.dim_customers
+GROUP BY customer_segment;

@@ -1,0 +1,89 @@
+version: 2
+
+models:
+  - name: fct_daily_transactions
+    description: >
+      Daily transaction summary per customer and account.
+      Grain: one row per transaction_date + customer_id + account_id combination.
+      Only includes completed transactions.
+    tests:
+      - dbt_expectations.expect_table_row_count_to_be_between:
+          min_value: 1
+          max_value: 100000
+
+    columns:
+      - name: transaction_date
+        description: Date of the transactions being summarised
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: "'2020-01-01'"
+              max_value: "current_date"
+
+      - name: total_amount
+        description: Sum of all completed transaction amounts for this date/customer/account
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 1000000
+
+      - name: transaction_count
+        description: Number of completed transactions
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1
+              max_value: 10000
+
+      - name: avg_amount
+        description: Average transaction amount
+        tests:
+          - dbt_expectations.expect_column_mean_to_be_between:
+              min_value: 10
+              max_value: 10000
+
+  - name: dim_customers
+    description: >
+      Customer dimension table with lifetime transaction metrics and segmentation.
+      One row per customer. Includes customers with no transactions (left join).
+    tests:
+      - dbt_expectations.expect_table_row_count_to_equal:
+          value: 10    # We have exactly 10 customers in our sample data
+
+    columns:
+      - name: customer_id
+        description: Unique customer identifier
+        tests:
+          - unique
+          - not_null
+
+      - name: email
+        description: Customer email — must be a valid email format
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+
+      - name: credit_score
+        description: Customer credit score — valid range is 300 to 850
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 300
+              max_value: 850
+
+      - name: customer_segment
+        description: Derived customer segment based on lifetime value
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['platinum', 'gold', 'silver', 'bronze']
+
+      - name: total_lifetime_value
+        description: Total amount of all completed transactions
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 10000000

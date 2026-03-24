@@ -46,7 +46,7 @@ final as (
         c.state,
         c.age_group,
         c.created_at                                as customer_since,
-        c.customer_age_days,
+        --c.customer_age_days,
 
         -- Transaction metrics (coalesce handles customers with no transactions)
         coalesce(m.total_transactions,        0)    as total_transactions,

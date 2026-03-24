@@ -1,13 +1,25 @@
 {{
     config(
-        materialized='table',
-        schema='marts'
+        materialized='incremental',
+        unique_key=dbt_utils.generate_surrogate_key(
+            ['transaction_date', 'customer_id', 'account_id']
+        ),
+        on_schema_change='fail'
     )
 }}
 
 with customer_transactions as (
 
     select * from {{ ref('int_customer_transactions') }}
+
+    {% if is_incremental() %}
+    -- On incremental runs, only process transactions since the last run
+    -- We look back 1 day to catch any late-arriving data
+    where transaction_date >= (
+        select date_add(max(transaction_date), interval '-1 day')
+        from {{ this }}
+    )
+    {% endif %}
 
 ),
 
@@ -42,7 +54,8 @@ daily_summary as (
         sum(case when risk_flag     then 1 else 0 end)  as risk_flagged_count,
 
         -- Transaction fee (using macro — added in Part 3) 
-        sum({{ calculate_transaction_fee('amount', 'transaction_type') }}) as total_fees
+        sum({{ calculate_transaction_fee('amount', 'transaction_type') }}) as total_fees,
+        {{ audit_columns() }}
 
     from customer_transactions
     where status = 'completed'

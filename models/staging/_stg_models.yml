@@ -11,6 +11,8 @@ models:
         tests:
           - unique
           - not_null
+          - valid_id_format:
+              prefix: 'TXN'
 
       - name: account_id
         description: Foreign key to accounts (customer accessed through account)
@@ -20,11 +22,14 @@ models:
               to: ref('stg_accounts')
               field: account_id
           # TODO [Module 2]: Add relationships test to stg_accounts
+      
+          
 
       - name: amount
         description: Transaction amount in USD
         tests:
           - not_null
+          - positive_value
           # TODO [Module 2]: Add test to ensure amount is not zero
 
       - name: transaction_type
@@ -52,6 +57,8 @@ models:
         tests:
           - not_null
           - unique
+          - valid_id_format:
+              prefix: 'ACC'
           
           # TODO [Module 2]: Add relationships test to stg_accounts
 
@@ -95,6 +102,8 @@ models:
           tests:
             - not_null
             - unique
+            - valid_id_format:
+                prefix: 'CUST'
             # TODO [Module 2]: Add relationships test to stg_customers
 
         - name: email

@@ -25,11 +25,19 @@ sources:
             description: Transaction amount in USD
             tests:
               - not_null
+              - positive_value
 
           - name: transaction_date
             description: Date when transaction occurred
             tests:
               - not_null
+
+         
+         
+
+
+
+
 
       - name: accounts
         description: Account master data
@@ -52,6 +60,10 @@ sources:
                   arguments:
                     values: ['checking', 'savings', 'credit_card']
 
+          
+
+      
+
       - name: customers
         description: Customer master data
         columns:
@@ -66,3 +78,7 @@ sources:
             tests:
               - unique
               - not_null
+
+
+
+          

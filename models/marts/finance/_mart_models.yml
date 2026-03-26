@@ -2,6 +2,8 @@ version: 2
 
 models:
   - name: fct_daily_transactions
+    config:
+      tags: ['finance', 'daily', 'critical']  # critical = alert if this fails
     description: >
       Daily transaction summary per customer and account.
       Grain: one row per transaction_date + customer_id + account_id combination.

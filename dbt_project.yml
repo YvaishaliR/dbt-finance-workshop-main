@@ -28,15 +28,18 @@ models:
 
     staging:
       +materialized: view     # Views are lightweight - no data stored, query runs fresh each time
-      +schema: staging        # Creates models in the 'staging' schema in DuckDB
+      +schema: staging 
+      +tags: ['staging', 'hourly']       # Creates models in the 'staging' schema in DuckDB
 
     intermediate:
       +materialized: ephemeral  # Not created in DB at all - inlined as a CTE wherever referenced
       +schema: intermediate
+      +tags: ['intermediate']
 
     marts:
       +materialized: table    # Physical tables - data is stored, faster to query than views
       +schema: marts
+      +tags: ['marts', 'daily']
       finance:
         +tags: ['finance', 'marts']   # Tags let you run subsets: dbt build --select tag:finance
 

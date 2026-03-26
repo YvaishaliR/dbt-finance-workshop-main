@@ -20,7 +20,7 @@
 with accounts as (
 
     -- Base account data (all columns from staging)
-    select * 
+    select *
     from {{ ref('stg_accounts') }}
 
 ),
@@ -50,22 +50,22 @@ final as (
         a.open_date,
 
         -- Metrics (handle accounts with no transactions)
-        coalesce(m.transaction_count, 0)        as transaction_count,
-        coalesce(m.total_credits, 0)            as total_credits,
-        coalesce(m.total_debits, 0)             as total_debits,
-        coalesce(m.net_balance_change, 0)       as net_balance_change,
         m.first_transaction_date,
         m.last_transaction_date,
+        coalesce(m.transaction_count, 0) as transaction_count,
+        coalesce(m.total_credits, 0) as total_credits,
+        coalesce(m.total_debits, 0) as total_debits,
+        coalesce(m.net_balance_change, 0) as net_balance_change,
 
         -- Account health classification
-        case 
+        case
             when m.account_id is null then 'inactive'
             when m.net_balance_change >= 0 then 'healthy'
             else 'declining'
         end as account_health
 
-    from accounts a
-    left join account_metrics m
+    from accounts as a
+    left join account_metrics as m
         on a.account_id = m.account_id
 
 )

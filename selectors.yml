@@ -1,0 +1,40 @@
+selectors:
+
+  - name: staging_layer
+    description: All staging models and their tests
+    definition:
+      method: path
+      value: models/staging
+
+  - name: daily_refresh
+    description: Models that run on the daily schedule
+    definition:
+      union:
+        - method: tag
+          value: daily
+        - method: tag
+          value: critical
+
+  - name: hourly_refresh
+    description: Lightweight models that refresh every hour
+    definition:
+      method: tag
+      value: hourly
+
+  - name: finance_domain
+    description: All finance domain models end-to-end
+    definition:
+      union:
+        - method: path
+          value: models/staging
+        - method: path
+          value: models/intermediate
+        - method: path
+          value: models/marts/finance
+
+  - name: mart_with_upstreams
+    description: Run a full pipeline for the mart layer
+    definition:
+      method: selector
+      value: daily_refresh
+      parents: true
